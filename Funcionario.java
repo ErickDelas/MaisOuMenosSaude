@@ -2,6 +2,7 @@ package maisoumenossaudetest;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class Funcionario extends Pessoa{
     private String nCtps;
@@ -11,6 +12,7 @@ public class Funcionario extends Pessoa{
     private LocalTime fimExpediente;
     private double ultimoContraCheque;
     private double bonificacao;
+    private ArrayList <Funcionario> funcionario = new ArrayList();
 
     public Funcionario(String nome, String cpf, String endereco, 
         String nTelefone, String email, String nCtps, double salario, 
@@ -34,59 +36,12 @@ public class Funcionario extends Pessoa{
         
     }
     
-    public double getBonificacao() {
-        return bonificacao;
+    public void cadastrarFuncionario(Funcionario f){
+        this.funcionario.add(f);
     }
 
-    public void setBonificacao(double bonificacao) {
-        this.bonificacao = bonificacao;
+    public ArrayList<Funcionario> getFuncionario() {
+        return funcionario;
     }
     
-    public String getnCtps() {
-        return nCtps;
-    }
-
-    public void setnCtps(String nCtps) {
-        this.nCtps = nCtps;
-    }
-
-    public double getSalario() {
-        return salario;
-    }
-
-    public void setSalario(double salario) {
-        this.salario = salario;
-    }
-
-    public LocalDate getDataContratacao() {
-        return dataContratacao;
-    }
-
-    public void setDataContratacao(LocalDate dataContratacao) {
-        this.dataContratacao = dataContratacao;
-    }
-
-    public LocalTime getInicioExpediente() {
-        return inicioExpediente;
-    }
-
-    public void setInicioExpediente(LocalTime inicioExpediente) {
-        this.inicioExpediente = inicioExpediente;
-    }
-
-    public LocalTime getFimExpediente() {
-        return fimExpediente;
-    }
-
-    public void setFimExpediente(LocalTime fimExpediente) {
-        this.fimExpediente = fimExpediente;
-    }
-
-    public double getUltimoContraCheque() {
-        return ultimoContraCheque;
-    }
-
-    public void setUltimoContraCheque(double ultimoContraCheque) {
-        this.ultimoContraCheque = ultimoContraCheque;
-    }
 }
