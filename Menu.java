@@ -7,7 +7,12 @@ import java.util.Scanner;
 
 
 public class Menu {
+    private Funcionario f;
+    private Cliente c;
+    private Dependente d;
+    private Plano p;
     Scanner sc = new Scanner (System.in);
+    
     public static void exibeMenu(){
         System.out.println("Olá, sejá bem-vindo ao Mais ou menos saúde.");
         System.out.println("O que você deseja fazer?");
@@ -18,6 +23,7 @@ public class Menu {
         System.out.println("[5] cadastrar Cliente;");
         System.out.println("[6] cadastrar Dependente;");
         System.out.println("[7] cadastrar Plano;");
+        System.out.println("[8] cadastrar Especialidades dos planos;");
         System.out.println("[0] Sair");
     }
     
@@ -140,18 +146,39 @@ public class Menu {
         Plano p = new Plano(valorPlano, beneficiosPlano);
         return p;
     }
+    
     public void executaAcao(int opcao){
-        Funcionario f = funcionario(opcao);
-        Gerente g = gerente();
-        Plano p = plano();
-        switch (opcao){
-            case 1: f.cadastrarFuncionario(f); break;
-            case 2: f.cadastrarFuncionario(f); break;
-            case 3: f.cadastrarFuncionario(f); break;
-            case 4: f.cadastrarFuncionario(f); break;
-            case 5: cliente().cadastrarCliente(cliente()); break;
-            case 6: dependente().cadastrarDependente(dependente()); break;
-            case 7: g.cadastrarPlano(p);break;
-        }       
+    switch (opcao){
+            case 1:
+                f = funcionario(opcao);
+                f.cadastrarFuncionario(f); 
+                break;
+            case 2: 
+                f = funcionario(opcao);
+                f.cadastrarFuncionario(f); 
+                break;
+            case 3: 
+                f = funcionario(opcao);
+                f.cadastrarFuncionario(f); 
+                break;
+            case 4: 
+                f = funcionario(opcao);
+                f.cadastrarFuncionario(f); 
+                break;
+            case 5: 
+                c = cliente();
+                c.cadastrarCliente(c); 
+                break;
+            case 6: 
+                d = dependente();
+                d.cadastrarDependente(d); 
+                break;
+            case 7: 
+                p = plano();
+                p.cadastrarPlano(p);
+                break;
+            case 8: 
+                break;
+        }
     }
 }
