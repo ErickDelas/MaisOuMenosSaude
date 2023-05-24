@@ -3,12 +3,12 @@ package maisoumenossaudetest;
 public class Plano {
     private double valorPlano;
     private String beneficiosPlano;
-    private String letrasMiudas; // O que seria isso, Arthur? está no diagrama de classes.
+    //private String letrasMiudas; // O que seria isso, Arthur? está no diagrama de classes.
     
-    public Plano (double valorPlano, String beneficiosPlano, String letrasMiudas){
+    public Plano (double valorPlano, String beneficiosPlano){
         this.valorPlano = valorPlano;
         this.beneficiosPlano = beneficiosPlano;
-        this.letrasMiudas = letrasMiudas;
+        //this.letrasMiudas = letrasMiudas;
     }
 
     public double getValorPlano() {
@@ -25,13 +25,5 @@ public class Plano {
 
     public void setBeneficiosPlano(String beneficiosPlano) {
         this.beneficiosPlano = beneficiosPlano;
-    }
-
-    public String getLetrasMiudas() {
-        return letrasMiudas;
-    }
-
-    public void setLetrasMiudas(String letrasMiudas) {
-        this.letrasMiudas = letrasMiudas;
     }
 }
