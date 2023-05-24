@@ -36,6 +36,10 @@ public class Gerente extends Funcionario{
     }
     
     public void cadastrarPlano(Plano p){
+        if(plano.get(0) == null){
+            //chama o método construtor de gerente que eu n achei aqui Matheus
+        }
+        else
         this.plano.add(p);
     }
 }
