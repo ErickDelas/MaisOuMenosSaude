@@ -6,6 +6,7 @@ public class MaisOuMenosSaudeTest {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner (System.in);
+        Menu m = new Menu();
         int opcao = -1;
         
         while(opcao!=0){
@@ -18,7 +19,7 @@ public class MaisOuMenosSaudeTest {
                 System.out.println("Você finalizou a sessão!");
                 break;
             } else {                
-                Menu.executaAcao(opcao);
+                m.executaAcao(opcao);
             }
         }
     }
