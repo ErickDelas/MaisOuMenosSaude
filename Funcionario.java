@@ -45,3 +45,15 @@ public class Funcionario extends Pessoa{
     }
     
 }
+/*
+
+private static ArrayList<Funcionario> funcionarios = new ArrayList<>();
+public static ArrayList<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+public static void cadastrarFuncionario(String nome, String cpf, String endereco,
+                                            String nTelefone, String email, String nCtps, double salario,
+                                            LocalDate dataContratacao, LocalTime inicioExpediente,
+                                            LocalTime fimExpediente, double ultimoContraCheque, double bonificacao) {
+        Funcionario funcionario = new Funcionario(nome, cpf, endereco, nTelefone, email, nCtps,
+*/
