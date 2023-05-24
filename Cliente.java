@@ -1,13 +1,15 @@
 package maisoumenossaudetest;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Cliente extends Pessoa{
     private String nSus;
     private String nCartaoCredito;
     private LocalDateTime dataHoraAquisicaoPlano;
     private Dependente dependente;
-    
+    private ArrayList <Cliente> cliente = new ArrayList();
+        
     public Cliente(String nome, String cpf, String endereco, 
         String nTelefone, String email, String nSus, String nCartaoCredito, 
         LocalDateTime dataHoraAquisicaoPlano, Dependente dependente) {
@@ -18,9 +20,13 @@ public class Cliente extends Pessoa{
         this.dependente = dependente;
     }
 
-    public void cadastraDependente(){
-        
+    public void cadastrarCliente(Cliente c){
+        this.cliente.add(c);
     }
+    
+    /*public void cadastrarDependente(Dependente d){
+        this.cliente.add(d);
+    }*/
     
     public void cancelaPlano (){
         
@@ -32,37 +38,5 @@ public class Cliente extends Pessoa{
     
     public void marcarConsulta(){
         
-    }
-    
-    public String getnSus() {
-        return nSus;
-    }
-
-    public void setnSus(String nSus) {
-        this.nSus = nSus;
-    }
-
-    public String getnCartaoCredito() {
-        return nCartaoCredito;
-    }
-
-    public void setnCartaoCredito(String nCartaoCredito) {
-        this.nCartaoCredito = nCartaoCredito;
-    }
-
-    public LocalDateTime getDataHoraAquisicaoPlano() {
-        return dataHoraAquisicaoPlano;
-    }
-
-    public void setDataHoraAquisicaoPlano(LocalDateTime dataHoraAquisicaoPlano) {
-        this.dataHoraAquisicaoPlano = dataHoraAquisicaoPlano;
-    }
-
-    public Dependente getDependente() {
-        return dependente;
-    }
-
-    public void setDependente(Dependente dependente) {
-        this.dependente = dependente;
     }
 }
