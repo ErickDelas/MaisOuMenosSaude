@@ -57,13 +57,6 @@ public class Menu {
                 nCtps, salario, dataContratacao, inicioExpediente, fimExpediente, 
                 ultimoContraCheque, bonificacao, comissaoFixa);
             return a;
-        } else if (opcao==4){
-            System.out.println("Comissão: ");
-            double comissaoFixa = sc.nextDouble();
-            Gerente g = new Gerente(nome, cpf, endereco, nTelefone, email, 
-                nCtps, salario, dataContratacao, inicioExpediente, fimExpediente, 
-                ultimoContraCheque, bonificacao, comissaoFixa);
-            return g;
         } else{
             Funcionario f = new Funcionario(nome, cpf, endereco, nTelefone, email, 
                 nCtps, salario, dataContratacao, inicioExpediente, fimExpediente, 
@@ -72,6 +65,51 @@ public class Menu {
         }
     }
     
+    public Gerente gerente (){
+        System.out.print("Nome: ");
+        String nome = sc.nextLine();
+        System.out.println("CPF: ");
+        String cpf = sc.nextLine();
+        System.out.println("Endereço: ");
+        String endereco = sc.nextLine();
+        System.out.println("Numero de telefone: ");
+        String nTelefone = sc.nextLine();
+        System.out.println("Email: ");
+        String email = sc.nextLine();
+        System.out.println("Numero da carteira de trabalho: ");
+        String nCtps = sc.nextLine();
+        System.out.println("Salario: ");
+        double salario = sc.nextDouble();
+        System.out.println("Ultimo contra-cheque: ");
+        double ultimoContraCheque = sc.nextDouble();
+        System.out.println("Bonificação: ");
+        double bonificacao = sc.nextDouble();
+        LocalDate dataContratacao = LocalDate.now();
+        LocalTime inicioExpediente = LocalTime.of(07, 0, 0);
+        LocalTime fimExpediente = LocalTime.of(17, 0, 0);
+        System.out.println("Comissão: ");
+        double comissaoFixa = sc.nextDouble();
+        Gerente g = new Gerente(nome, cpf, endereco, nTelefone, email, 
+            nCtps, salario, dataContratacao, inicioExpediente, fimExpediente, 
+            ultimoContraCheque, bonificacao, comissaoFixa);
+            return g;
+    }
+    
+    public Dependente dependente(){
+        System.out.print("Nome: ");
+        String nome = sc.nextLine();
+        System.out.println("CPF: ");
+        String cpf = sc.nextLine();
+        System.out.println("Endereço: ");
+        String endereco = sc.nextLine();
+        System.out.println("Numero de telefone: ");
+        String nTelefone = sc.nextLine();
+        System.out.println("Email: ");
+        String email = sc.nextLine();            
+        Dependente d = new Dependente(nome, cpf, endereco, nTelefone, email);
+        return d;
+    }
+        
     public Cliente cliente(){
         System.out.print("Nome: ");
         String nome = sc.nextLine();
@@ -87,19 +125,33 @@ public class Menu {
         String nSus = sc.nextLine();
         System.out.println("Numero do cartão (Credito/Debito): ");
         String nCartaoCredito = sc.nextLine();
-        LocalDateTime dataHoraAquisicaoPlano;
-        Dependente dependente;
-        Cliente c = new Cliente();
+        LocalDateTime dataHoraAquisicaoPlano = LocalDateTime.now();
+        Dependente dependente = dependente();
+        Cliente c = new Cliente(nome, cpf, endereco, nTelefone, email, nSus, 
+            nCartaoCredito, dataHoraAquisicaoPlano, dependente);
+        return c;
     }
     
+    public Plano plano (){
+        System.out.println("Valor do plano: ");
+        double valorPlano = sc.nextDouble();
+        System.out.println("Beneficios do plano: ");
+        String beneficiosPlano = sc.nextLine();
+        Plano p = new Plano(valorPlano, beneficiosPlano);
+        return p;
+    }
     public void executaAcao(int opcao){
-        int op = opcao;
-        Funcionario f = funcionario(op);
+        Funcionario f = funcionario(opcao);
+        Gerente g = gerente();
+        Plano p = plano();
         switch (opcao){
-            case 1, 2, 3, 4: f.cadastrarFuncionario(f);
-            case 2: Cliente.cadastrarCliente(); break;
-            case 3: Cliente.cadastrarDependente(); break;
-            case 4: Gerente.cadastrarPlano(); break;
+            case 1: f.cadastrarFuncionario(f); break;
+            case 2: f.cadastrarFuncionario(f); break;
+            case 3: f.cadastrarFuncionario(f); break;
+            case 4: f.cadastrarFuncionario(f); break;
+            case 5: cliente().cadastrarCliente(cliente()); break;
+            case 6: dependente().cadastrarDependente(dependente()); break;
+            case 7: g.cadastrarPlano(p);break;
         }       
     }
 }
