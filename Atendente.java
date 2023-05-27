@@ -8,17 +8,21 @@ public class Atendente extends Funcionario{
     private int totCancelamento;
     private double comissaoFixa;
     private BDados bd = new BDados();
+    private Credenciais c = new Credenciais();
     
     public Atendente(){}
     
     public Atendente(String nome, String cpf, String endereco, String nTelefone, 
         String email, String nCtps, double salario, LocalDate dataContratacao, 
         LocalTime inicioExpediente, LocalTime fimExpediente, 
-        double ultimoContraCheque, double bonificacao, double comissaoFixa) {
+        double ultimoContraCheque, double bonificacao, double comissaoFixa, 
+        String usuario, String senha) {
         super(nome, cpf, endereco, nTelefone, email, nCtps, salario, 
             dataContratacao, inicioExpediente, fimExpediente, ultimoContraCheque, 
             bonificacao);
             this.comissaoFixa = comissaoFixa;
+            this.c.setUsuario(usuario);
+            this.c.setSenha(senha);
     }
     
     /*Recebe um Cliente como parametro e add em um ArrayList do tipo Cliente 
