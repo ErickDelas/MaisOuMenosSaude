@@ -6,6 +6,7 @@ import java.time.LocalTime;
 public class Vendedor extends Funcionario{
     private int totVendasMes = 0;
     private double comissaoFixa;
+    private Credenciais c = new Credenciais();
 
     public Vendedor (){
         
@@ -13,12 +14,14 @@ public class Vendedor extends Funcionario{
     public Vendedor(String nome, String cpf, String endereco, String nTelefone, 
         String email, String nCtps, double salario, LocalDate dataContratacao, 
         LocalTime inicioExpediente, LocalTime fimExpediente, 
-        double ultimoContraCheque, double bonificacao, 
-        double comissaoFixa) {
+        double ultimoContraCheque, double bonificacao, double comissaoFixa, 
+        String usuario, String senha) {
         super(nome, cpf, endereco, nTelefone, email, nCtps, salario, 
             dataContratacao, inicioExpediente, fimExpediente, ultimoContraCheque, 
             bonificacao);
         this.comissaoFixa = comissaoFixa;
+        this.c.setUsuario(usuario);
+        this.c.setSenha(senha);
     }
     
     public void venderPlano(){
