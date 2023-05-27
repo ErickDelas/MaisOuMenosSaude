@@ -65,24 +65,39 @@ public class Menu {
         LocalTime fimExpediente = LocalTime.of(17, 0, 0);
         if(opcao==2){
             System.out.print("Comissão: ");
+            System.out.println("Agora, informe um usuario e senha para acessar o sistema.");
+            System.out.println("Usuario: ");
+            String usuario = sc.nextLine();
+            System.out.println("Senha: ");
+            String senha = sc.nextLine();
             double comissaoFixa = sc.nextDouble();
             Atendente a = new Atendente(nome, cpf, endereco, nTelefone, email, 
                 nCtps, salario, dataContratacao, inicioExpediente, fimExpediente, 
-                ultimoContraCheque, bonificacao, comissaoFixa);
+                ultimoContraCheque, bonificacao, comissaoFixa, usuario, senha);
             return a;
         } else if (opcao==3){
             System.out.print("Comissão: ");
             double comissaoFixa = sc.nextDouble();
-            Gerente g = new Gerente(nome, cpf, endereco, nTelefone, email, 
-                nCtps, salario, dataContratacao, inicioExpediente, fimExpediente, 
-                ultimoContraCheque, bonificacao, comissaoFixa);
+            System.out.println("Agora, informe um usuario e senha para acessar o sistema.");
+            System.out.println("Usuario: ");
+            String usuario = sc.nextLine();
+            System.out.println("Senha: ");
+            String senha = sc.nextLine();
+            Gerente g = new Gerente(nome, cpf, endereco, nTelefone, email, nCtps,
+                salario, dataContratacao, inicioExpediente, fimExpediente,
+                ultimoContraCheque, bonificacao, comissaoFixa, usuario, senha);
             return g;            
         } else{
             System.out.print("Comissão: ");
+            System.out.println("Agora, informe um usuario e senha para acessar o sistema.");
+            System.out.println("Usuario: ");
+            String usuario = sc.nextLine();
+            System.out.println("Senha: ");
+            String senha = sc.nextLine();
             double comissaoFixa = sc.nextDouble();
             Vendedor v = new Vendedor(nome, cpf, endereco, nTelefone, email, 
                 nCtps, salario, dataContratacao, inicioExpediente, fimExpediente, 
-                ultimoContraCheque, bonificacao, comissaoFixa);
+                ultimoContraCheque, bonificacao, comissaoFixa, usuario, senha);
             return v;
         }
     }
