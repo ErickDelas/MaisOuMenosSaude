@@ -6,6 +6,7 @@ import java.time.LocalTime;
 public class Gerente extends Funcionario{
     private double comissaoFixa;
     private BDados bd = new BDados();
+    private Credenciais c = new Credenciais();
     
     public Gerente(){
         
@@ -14,11 +15,14 @@ public class Gerente extends Funcionario{
     public Gerente(String nome, String cpf, String endereco, String nTelefone, 
         String email, String nCtps, double salario, LocalDate dataContratacao, 
         LocalTime inicioExpediente, LocalTime fimExpediente, 
-        double ultimoContraCheque, double bonificacao, double comissaoFixa) {
+        double ultimoContraCheque, double bonificacao, double comissaoFixa,
+        String usuario, String senha) {
         super(nome, cpf, endereco, nTelefone, email, nCtps, salario, 
             dataContratacao, inicioExpediente, fimExpediente, ultimoContraCheque, 
             bonificacao);
         this.comissaoFixa = comissaoFixa;
+        c.setUsuario(usuario);
+        c.setSenha(senha);
     }
     
     /*Recebe um vendedor como parametro e add em um ArrayList do tipo vendedor
@@ -42,6 +46,12 @@ public class Gerente extends Funcionario{
     public void calculaBonificacao1(){
         
     }
+
+    public Credenciais getC() {
+        return c;
+    }
+    
+    
 }
 /*
 Cada uma das três unidades da empresa possui um gerente, vendedores e atendentes. Um gerente é
