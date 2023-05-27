@@ -3,6 +3,7 @@ package maisoumenossaude;
 
 public class SrAntonioAdm {
     private BDados bd = new BDados ();
+    private Credenciais usuario;
     
     /*Recebe um Gerente como parametro e add em um ArrayList do tipo gerente
     que tem na classe BDados.
