@@ -22,9 +22,20 @@ public class Menu {
     private nomesClinicas nc;
     Scanner sc = new Scanner (System.in);
     
+    public void exideMenuSrAntonio(){
+        System.out.println("Olá Sr. Antonio, seja bem-vindo ao Mais ou Menos Saúde.");
+        System.out.println("Primeiramente, vamos fazer o seu login.");
+        System.out.print("Usuario:");
+        String usuario = sc.nextLine();
+        srA.getUsuario().setUsuario(usuario);
+        System.out.print("Senha: ");
+        String senha = sc.next();
+        srA.getUsuario().setSenha(senha);
+    }
+    
     public static void exibeMenu(){
         System.out.println("\n--------------------------------------------");
-        System.out.println("Olá, sejá bem-vindo ao Mais ou menos saúde.");
+        //System.out.println("Olá, sejá bem-vindo ao Mais ou menos saúde.");
         System.out.println("O que você deseja fazer?");
         System.out.println("[1] cadastrar Vendedor;");
         System.out.println("[2] cadastrar AtendenteSAC;");
@@ -41,7 +52,8 @@ public class Menu {
     Esse metodo vai inicializar os atributos de Vendedor, Atendente e gerente e 
     retorna o mesmo para poder usa-lo.
     */
-    public Funcionario funcionario(int opcao){
+    private Funcionario funcionario(int opcao){
+        sc.nextLine();
         System.out.print("Nome: ");
         String nome = sc.nextLine();
         System.out.print("CPF: ");
@@ -66,9 +78,9 @@ public class Menu {
         if(opcao==2){
             System.out.print("Comissão: ");
             System.out.println("Agora, informe um usuario e senha para acessar o sistema.");
-            System.out.println("Usuario: ");
+            System.out.print("Usuario: \n");
             String usuario = sc.nextLine();
-            System.out.println("Senha: ");
+            System.out.print("Senha: ");
             String senha = sc.nextLine();
             double comissaoFixa = sc.nextDouble();
             Atendente a = new Atendente(nome, cpf, endereco, nTelefone, email, 
@@ -78,10 +90,10 @@ public class Menu {
         } else if (opcao==3){
             System.out.print("Comissão: ");
             double comissaoFixa = sc.nextDouble();
-            System.out.println("Agora, informe um usuario e senha para acessar o sistema.");
+            System.out.print("Agora, informe um usuario e senha para acessar o sistema.");
             System.out.println("Usuario: ");
             String usuario = sc.nextLine();
-            System.out.println("Senha: ");
+            System.out.print("Senha: ");
             String senha = sc.nextLine();
             Gerente g = new Gerente(nome, cpf, endereco, nTelefone, email, nCtps,
                 salario, dataContratacao, inicioExpediente, fimExpediente,
@@ -89,8 +101,8 @@ public class Menu {
             return g;            
         } else{
             System.out.print("Comissão: ");
-            System.out.println("Agora, informe um usuario e senha para acessar o sistema.");
-            System.out.println("Usuario: ");
+            System.out.print("Agora, informe um usuario e senha para acessar o sistema.");
+            System.out.print("Usuario: ");
             String usuario = sc.nextLine();
             System.out.println("Senha: ");
             String senha = sc.nextLine();
@@ -106,7 +118,7 @@ public class Menu {
     Esse metodo vai inicializar os atributos de um dependente e 
     retorna o mesmo para poder usa-lo.
     */
-    public Dependente dependente(){
+    private Dependente dependente(){
         System.out.print("Nome: ");
         String nome = sc.nextLine();
         System.out.println("CPF: ");
@@ -125,7 +137,7 @@ public class Menu {
     Esse metodo vai inicializar os atributos de um cliente e 
     retorna o mesmo para poder usa-lo.
     */    
-    public Cliente cliente(){
+    private Cliente cliente(){
         System.out.print("Nome: ");
         String nome = sc.nextLine();
         System.out.println("CPF: ");
@@ -151,7 +163,7 @@ public class Menu {
     Esse metodo vai inicializar os atributos de Plano e retorna o mesmo para 
     poder usa-lo.
     */
-    public Plano plano (){
+    private Plano plano (){
         System.out.println("Valor do plano: ");
         double valorPlano = sc.nextDouble();
         System.out.println("Informe a 1º especialidade: ");
