@@ -14,6 +14,8 @@ public class MaisOuMenosSaudeTest {
         Menu m = new Menu();
         int opcao = -1;
         
+        m.exideMenuSrAntonio();
+        
         while(opcao!=0){
             Menu.exibeMenu();
             opcao = sc.nextInt();
