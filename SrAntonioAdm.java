@@ -3,7 +3,14 @@ package maisoumenossaude;
 
 public class SrAntonioAdm {
     private BDados bd = new BDados ();
-    private Credenciais usuario;
+    private Credenciais usuario = new Credenciais();
+    
+    public SrAntonioAdm(){}
+    
+    public SrAntonioAdm(String usuario, String senha){
+        this.usuario.setUsuario(usuario);
+        this.usuario.setSenha(senha);
+    }
     
     /*Recebe um Gerente como parametro e add em um ArrayList do tipo gerente
     que tem na classe BDados.
@@ -22,6 +29,12 @@ public class SrAntonioAdm {
     /*public void cadastrarEspecialidadesPlano(EspecialidadesP ep){
         this.bd.getEp().add(ep);
     }*/
+
+    public Credenciais getUsuario() {
+        return usuario;
+    }
+    
+    
 }
 /*
 o sr. Antônio quer fazer a migração de forma gradual, testando ele mesmo todas as
