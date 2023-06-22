@@ -1,53 +1,100 @@
 package maisoumenossaude;
 
+import cidades.Enum.Cidades;
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.Scanner;
 //import java.util.ArrayList;
 
-public class Atendente extends Funcionario{
+public class Atendente extends Funcionario {
+
     private int totCancelamento;
-    private double comissaoFixa;
-    private BDados bd = new BDados();
-    private Credenciais c = new Credenciais();
-    
-    public Atendente(){}
-    
-    public Atendente(String nome, String cpf, String endereco, String nTelefone, 
-        String email, String nCtps, double salario, LocalDate dataContratacao, 
-        LocalTime inicioExpediente, LocalTime fimExpediente, 
-        double ultimoContraCheque, double bonificacao, double comissaoFixa, 
-        String usuario, String senha) {
-        super(nome, cpf, endereco, nTelefone, email, nCtps, salario, 
-            dataContratacao, inicioExpediente, fimExpediente, ultimoContraCheque, 
-            bonificacao);
-            this.comissaoFixa = comissaoFixa;
-            this.c.setUsuario(usuario);
-            this.c.setSenha(senha);
+    private Credenciais credenciaisAtendente;
+    private Cidades cidade;
+
+    public Atendente() {
     }
-    
+
+    public Atendente(String nome, String cpf, String endereco, String nTelefone,
+            String email, String nCtps, double salario, LocalDate dataContratacao,
+            double comissaoFixa, Credenciais credenciaisAtendente) {
+        super(nome, cpf, endereco, nTelefone, email, nCtps, salario,
+                dataContratacao, comissaoFixa);
+        this.credenciaisAtendente = credenciaisAtendente;
+    }
+
     /*Recebe um Cliente como parametro e add em um ArrayList do tipo Cliente 
     chamado possiveisClientes que tem na classe BDados.
-    */
-    public void cadastrarCliente(Cliente c){
-        this.bd.getPossiveisClientes().add(c);
+     */
+    public void cadastrarCliente() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Nome: ");
+        String nome = sc.nextLine();
+        System.out.print("CPF: ");
+        String cpf = sc.nextLine();
+        System.out.print("Endereço: ");
+        String endereco = sc.nextLine();
+        System.out.print("Numero de telefone: ");
+        String nTelefone = sc.nextLine();
+        System.out.print("Email: ");
+        String email = sc.nextLine();
+        Cliente cliente = new Cliente(nome, cpf, endereco, nTelefone, email);
+        BDados.getPossiveisClientes().add(cliente);
     }
-    
-    public void cancelaPlano(){
-        
+
+    public void exibirClientes() {
+        System.out.println("Lista de clientes: ");
+        for (Cliente clientesPossiveis : BDados.getPossiveisClientes()) {
+            System.out.println(clientesPossiveis);
+        }
     }
-    
-    public double calculaSalario(){
+
+    public void cancelaPlano() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Informe o CPF do cliente para cancelar o plano:");
+        String cpfCliente = sc.nextLine().toUpperCase();
+
+        for (Cliente c : BDados.getClientesAtivos()) {
+            if (cpfCliente.equals(c.getCpf().toUpperCase())) {
+                BDados.getClientesInativos().add(c);
+                BDados.getClientesAtivos().remove(c);
+                this.totCancelamento++;
+            }
+        }
+    }
+
+    public double calculaSalario() {
         return 0;
     }
-    
-    public void cadastraCliente(){
-        
+
+    public int getTotCancelamento() {
+        return totCancelamento;
+    }
+
+    public Credenciais getCredenciaisAtendente() {
+        return credenciaisAtendente;
+    }
+
+    public void setCidade(Cidades cidade) {
+        this.cidade = cidade;
+    }
+
+    public Cidades getCidade() {
+        return cidade;
+    }
+
+    @Override
+    public String toString() {
+        return "Nome: " + this.getNome()
+                + " - CPF: " + this.getCpf()
+                + " - Numero de telefone: " + this.getnTelefone()
+                + " - Email: " + this.getEmail()
+                + " - Endereço: " + this.getEndereco()
+                + " - Numero da carteira de trabalho: " + this.getnCtps()
+                + " - Salario: " + this.getSalario()
+                + " - Data de contratação: (" + this.getDataContratacao() + ")"
+                + " - Comissao Fixa: " + this.getComissaoFixa()
+                + " - Esse atentende trabalha na cidade " + this.cidade;
     }
 }
-/*
-O atendente é responsável por cadastrar os clientes na lista de “possíveis clientes”. Estes “clientes em
-potencial” podem vir tanto de um atendimento presencial quanto a partir de campanhas na internet e redes
-sociais. O atendente também é responsável por atender às solicitações de cancelamento do plano de saúde e
-para isso ele deve informar o CPF do cliente. O valor da bonificação de um atendente dependerá da quantidade
-de cancelamentos feitos no mês: quanto mais cancelamentos, menor a bonificação
-*/
