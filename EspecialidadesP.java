@@ -1,14 +1,36 @@
-/*package maisoumenossaude;
+package maisoumenossaude;
 
 public class EspecialidadesP {
-    private String ep1;
-    private String ep2;
-    private String ep3;
-    
-    public EspecialidadesP(String ep1, String ep2, String ep3){
-        this.ep1 = ep1;
-        this.ep2 = ep2;
-        this.ep3 = ep3;
+    private String nome;
+    private Double porcentagemDesconto;
+
+    public EspecialidadesP() {
+    }
+
+    public EspecialidadesP(String nome, Double porcentagemDesconto) {
+        this.nome = nome;
+        this.porcentagemDesconto = porcentagemDesconto;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Double getPorcentagemDesconto() {
+        return porcentagemDesconto;
+    }
+
+    public void setPorcentagemDesconto(Double porcentagemDesconto) {
+        this.porcentagemDesconto = porcentagemDesconto;
+    }
+
+    @Override
+    public String toString() {
+        return " nome: " + nome
+                + " - porcentagem de Desconto: " + porcentagemDesconto;
     }
 }
-*/
