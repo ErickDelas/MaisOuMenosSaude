@@ -1,8 +1,7 @@
 /*
 Vamos deixar alguns comentarios nas classes para explicar a nossa ideia e tentar
 ficar facil entender!
-*/
-
+ */
 package maisoumenossaude;
 
 import java.util.Scanner;
@@ -10,23 +9,21 @@ import java.util.Scanner;
 public class MaisOuMenosSaudeTest {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner (System.in);
-        Menu m = new Menu();
+        Scanner sc = new Scanner(System.in);
+
+        Usuarios.inciarUsuarios();
+
         int opcao = -1;
-        
-        m.exideMenuSrAntonio();
-        
-        while(opcao!=0){
-            Menu.exibeMenu();
+        while (opcao != 0) {
+            Menu.exibeMenuInicial();
             opcao = sc.nextInt();
-            
-            if(opcao==0){
-                System.out.print("\n--------------------------\n");
-                System.out.println("Você finalizou a sessão!");
-                System.out.print("--------------------------\n");
-                break;
-            } else {                
-                m.executaAcao(opcao);
+            switch (opcao){
+                case 1: 
+                    Usuarios.fazerLogin();
+                    break;
+                case 0: 
+                    Menu.msgFinal();
+                    break;
             }
         }
     }
