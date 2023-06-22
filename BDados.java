@@ -1,56 +1,71 @@
 package maisoumenossaude;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BDados {
-    private ArrayList <Atendente> atendente = new ArrayList();
-    private ArrayList <Cliente> possiveisClientes = new ArrayList();
-    private ArrayList <Cliente> clientesAtivos = new ArrayList();
-    private ArrayList <Cliente> clientesInativos = new ArrayList();
-    private ArrayList <Credenciais> credenciais = new ArrayList();
-    private ArrayList <Dependente> dependente = new ArrayList();
-    //private ArrayList <EspecialidadesP> ep = new ArrayList();
-    private ArrayList <Gerente> gerente = new ArrayList();
-    private ArrayList <Plano> plano = new ArrayList ();
-    private ArrayList <Vendedor> vendedor = new ArrayList();
 
-    public ArrayList<Atendente> getAtendente() {
-        return atendente;
+    private static List<Adm> adm = new ArrayList<>();
+
+    private static List<Funcionario> funcionarios = new ArrayList<>();
+
+    private static List<Atendente> atendentes = new ArrayList<>();
+
+    private static List<Gerente> gerentes = new ArrayList<>();
+
+    private static List<Vendedor> vendedores = new ArrayList<>();
+
+    private static List<Cliente> possiveisClientes = new ArrayList<>();
+    private static List<Cliente> clientesAtivos = new ArrayList<>();
+    private static List<Cliente> clientesInativos = new ArrayList<>();
+
+    private static List<Dependente> dependentes = new ArrayList<>();
+
+    private static List<Credenciais> credenciais = new ArrayList<>();
+
+    private static List<Plano> planos = new ArrayList<>();
+
+    public static List<Adm> getAdm() {
+        return adm;
     }
 
-    public ArrayList<Cliente> getPossiveisClientes() {
+    public static List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public static List<Atendente> getAtendentes() {
+        return atendentes;
+    }
+
+    public static List<Gerente> getGerentes() {
+        return gerentes;
+    }
+
+    public static List<Vendedor> getVendedores() {
+        return vendedores;
+    }
+
+    public static List<Cliente> getPossiveisClientes() {
         return possiveisClientes;
     }
 
-    public ArrayList<Cliente> getClientesAtivos() {
+    public static List<Cliente> getClientesAtivos() {
         return clientesAtivos;
     }
 
-    public ArrayList<Cliente> getClientesInativos() {
+    public static List<Cliente> getClientesInativos() {
         return clientesInativos;
     }
 
-    public ArrayList<Credenciais> getCredenciais() {
+    public static List<Dependente> getDependentes() {
+        return dependentes;
+    }
+
+    public static List<Credenciais> getCredenciais() {
         return credenciais;
     }
 
-    public ArrayList<Dependente> getDependente() {
-        return dependente;
+    public static List<Plano> getPlanos() {
+        return planos;
     }
-
-    /*public ArrayList<EspecialidadesP> getEp() {
-        return ep;
-    }*/
-
-    public ArrayList<Gerente> getGerente() {
-        return gerente;
-    }
-
-    public ArrayList<Plano> getPlano() {
-        return plano;
-    }
-
-    public ArrayList<Vendedor> getVendedor() {
-        return vendedor;
-    }  
 }
