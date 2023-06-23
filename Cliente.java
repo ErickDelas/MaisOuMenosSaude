@@ -37,25 +37,25 @@ public class Cliente extends Pessoa {
     public void comprarPlano(Plano p) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Pronto, para podermos continuar com a compra, vamos pedir alguns dados:");
-        System.out.println("Informe o seu Numero do SUS: ");
+        System.out.print("Informe o seu Numero do SUS: ");
         this.nSus = sc.nextLine();
-        System.out.println("Informe o seu Numero do cartão: ");
+        System.out.print("Informe o seu Numero do cartão: ");
         this.nCartaoCredito = sc.nextLine();
         System.out.println("O nosso Plano aceita você incluir dependente(s) que tenha menos de 18 anos: ");
-        System.out.println("Você tem algum Dependente para incluir? [S/N]");
-        char respDependente = sc.next().charAt(0);
+        System.out.print("Você tem algum Dependente para incluir? [S/N]");
+        char respDependente = sc.next().toUpperCase().charAt(0);
         if (respDependente == 'S') {
             System.out.println("Otimo! Vamos cadastrar os dados do seu dependente: ");
             System.out.print("Nome: ");
             sc.nextLine();
             String nome = sc.nextLine();
-            System.out.println("CPF: ");
+            System.out.print("CPF: ");
             String cpf = sc.nextLine();
-            System.out.println("Endereço: ");
+            System.out.print("Endereço: ");
             String endereco = sc.nextLine();
-            System.out.println("Numero de telefone: ");
+            System.out.print("Numero de telefone: ");
             String nTelefone = sc.nextLine();
-            System.out.println("Email: ");
+            System.out.print("Email: ");
             String email = sc.nextLine();
             this.dependente = new Dependente(nome, cpf, endereco, nTelefone, email);
         }
@@ -87,7 +87,6 @@ public class Cliente extends Pessoa {
                     + " - Numero do SUS: " + this.nSus
                     + " - Data e hora de aquisicao do Plano: " + this.dataHoraAquisicaoPlano
                     + " - Plano do cliente: " + this.planoCliente;
-
         } else {
             return "Nome: " + this.getNome()
                     + " - CPF: " + this.getCpf()
