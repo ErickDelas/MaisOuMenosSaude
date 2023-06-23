@@ -15,7 +15,7 @@ public class Usuarios {
     private static Vendedor vendedor;
 
     public static void inciarUsuarios() {
-        adm = new Adm(new Credenciais("Adm123", "Administrador123456789"));
+        adm = new Adm(new Credenciais("Adm123", "Adm321"));
         BDados.getAdm().add(adm);
 
         gerenteCF = new Gerente("g1", "g1", "g1", "g1",
@@ -35,75 +35,53 @@ public class Usuarios {
         BDados.getGerentes().add(gerenteT);
 
         for (int i = 1; i <= 3; i++) {
-            int aux1 = 0;
-            int aux2 = 0;
             atendente = new Atendente("a" + i, "a" + i, "a" + i, "a" + i, "a" + i, "a" + i,
-                    1000 + aux2, LocalDate.now(), 100 + aux1,
+                    1000, LocalDate.now(), 100,
                     new Credenciais("a" + i, "a" + i));
             atendente.setCidade(Cidades.CORONEL_FABRICIANO);
             BDados.getAtendentes().add(atendente);
-            aux1 = 100;
-            aux2 = 1000;
+
         }
 
         for (int i = 4; i <= 6; i++) {
-            int aux1 = 0;
-            int aux2 = 0;
             atendente = new Atendente("a" + i, "a" + i, "a" + i, "a" + i, "a" + i, "a" + i,
-                    4000 + aux2, LocalDate.now(), 400 + aux1,
+                    4000, LocalDate.now(), 400,
                     new Credenciais("a" + i, "a" + i));
             atendente.setCidade(Cidades.IPATINGA);
             BDados.getAtendentes().add(atendente);
-            aux1 = 100;
-            aux2 = 1000;
         }
 
         for (int i = 7; i <= 9; i++) {
-            int aux1 = 0;
-            int aux2 = 0;
             atendente = new Atendente("a" + i, "a" + i, "a" + i, "a" + i, "a" + i, "a" + i,
-                    7000 + aux2, LocalDate.now(), 700 + aux1,
+                    7000, LocalDate.now(), 700,
                     new Credenciais("a" + i, "a" + i));
             atendente.setCidade(Cidades.TIMOTEO);
             BDados.getAtendentes().add(atendente);
-            aux1 = 100;
-            aux2 = 1000;
         }
 
         for (int i = 1; i <= 3; i++) {
-            int aux1 = 0;
-            int aux2 = 0;
             vendedor = new Vendedor("v" + i, "v" + i, "v" + i, "v" + i, "v" + i, "v" + i,
-                    1000 + aux2, LocalDate.now(), 100 + aux1,
+                    1000, LocalDate.now(), 100,
                     new Credenciais("v" + i, "v" + i));
             vendedor.setCidade(Cidades.CORONEL_FABRICIANO);
             BDados.getVendedores().add(vendedor);
-            aux1 = 100;
-            aux2 = 1000;
         }
 
         for (int i = 4; i <= 6; i++) {
-            int aux1 = 0;
-            int aux2 = 0;
             vendedor = new Vendedor("v" + i, "v" + i, "v" + i, "v" + i, "v" + i, "v" + i,
-                    4000 + aux2, LocalDate.now(), 400 + aux1,
+                    4000, LocalDate.now(), 400,
                     new Credenciais("v" + i, "v" + i));
             vendedor.setCidade(Cidades.IPATINGA);
             BDados.getVendedores().add(vendedor);
-            aux1 = 100;
-            aux2 = 1000;
+
         }
 
         for (int i = 7; i <= 9; i++) {
-            int aux1 = 0;
-            int aux2 = 0;
             vendedor = new Vendedor("v" + i, "v" + i, "v" + i, "v" + i, "v" + i, "v" + i,
-                    7000 + aux2, LocalDate.now(), 700 + aux1,
+                    7000, LocalDate.now(), 700,
                     new Credenciais("v" + i, "v" + i));
             vendedor.setCidade(Cidades.TIMOTEO);
             BDados.getVendedores().add(vendedor);
-            aux1 = 100;
-            aux2 = 1000;
         }
 
         for (int i = 1; i <= 10; i++) {
