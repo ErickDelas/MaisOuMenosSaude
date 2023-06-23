@@ -8,7 +8,7 @@ public class Adm {
 
     private String nomeAdm = "Antonio";
     private Credenciais credenciaisAdm;
-    private String segurançaLogin = "o palmeiras nao tem mundial";
+    private String segurançaLogin = "opalmeirasnaotemmundial";
 
     public Adm() {
         this.credenciaisAdm = new Credenciais();
@@ -20,28 +20,125 @@ public class Adm {
 
     public void cadastrarGerente() {
         Scanner sc = new Scanner(System.in);
+        boolean temAtributo = true;
+        String cpf = "";
+        String usuario = "";
+        String senha = "";
+        String nTelefone = "";
+        String email = "";
+        String nCtps = "";
+
         System.out.print("Nome: ");
         String nome = sc.nextLine();
-        System.out.print("CPF: ");
-        String cpf = sc.nextLine();
+        while (temAtributo == true) {
+            int aux = 0;
+            System.out.print("CPF: ");
+            cpf = sc.nextLine();
+            for (Gerente gerentes : BDados.getGerentes()) {
+                if (gerentes.getCpf().equals(cpf)) {
+                    System.out.println("ERROR! Ja tem um gerente cadastrado com esse CPF");
+                    System.out.println("Tente novamente!!!");
+                    aux++;
+                    break;
+                } else {
+                    temAtributo = false;
+                }
+                aux++;
+            }
+            if (aux == 0) {
+                temAtributo = false;
+            }
+        }
+        temAtributo = true;
         System.out.print("Endereço: ");
         String endereco = sc.nextLine();
-        System.out.print("Numero de telefone: ");
-        String nTelefone = sc.nextLine();
-        System.out.print("Email: ");
-        String email = sc.nextLine();
-        System.out.print("Numero da carteira de trabalho: ");
-        String nCtps = sc.nextLine();
+        while (temAtributo == true) {
+            int aux = 0;
+            System.out.print("Numero de telefone: ");
+            nTelefone = sc.nextLine();
+            for (Gerente gerentes : BDados.getGerentes()) {
+                if (gerentes.getnTelefone().equals(nTelefone)) {
+                    System.out.println("ERROR! Ja tem um gerente cadastrado com esse Numero de telefone");
+                    System.out.println("Tente novamente!!!");
+                    aux++;
+                    break;
+                } else {
+                    temAtributo = false;
+                }
+                aux++;
+            }
+            if (aux == 0) {
+                temAtributo = false;
+            }
+        }
+        temAtributo = true;
+        while (temAtributo == true) {
+            int aux = 0;
+            System.out.print("Email: ");
+            email = sc.nextLine();
+            for (Gerente gerentes : BDados.getGerentes()) {
+                if (gerentes.getEmail().equals(email)) {
+                    System.out.println("ERROR! Ja tem um gerente cadastrado com esse email");
+                    System.out.println("Tente novamente!!!");
+                    aux++;
+                    break;
+                } else {
+                    temAtributo = false;
+                }
+                aux++;
+            }
+            if (aux == 0) {
+                temAtributo = false;
+            }
+        }
+        temAtributo = true;
+        while (temAtributo == true) {
+            int aux = 0;
+            System.out.print("Numero da carteira de trabalho: ");
+            nCtps = sc.nextLine();
+            for (Gerente gerentes : BDados.getGerentes()) {
+                if (gerentes.getnCtps().equals(nCtps)) {
+                    System.out.println("ERROR! Ja tem um gerente cadastrado com esse Nº de carteira de trabalho");
+                    System.out.println("Tente novamente!!!");
+                    aux++;
+                    break;
+                } else {
+                    temAtributo = false;
+                }
+                aux++;
+            }
+            if (aux == 0) {
+                temAtributo = false;
+            }
+        }
+        temAtributo = true;
         System.out.print("Salario: ");
         double salario = sc.nextDouble();
         System.out.print("Comissao Fixa: ");
         double comissaoF = sc.nextDouble();
-        System.out.println("Agora, informe um usuario e senha para acessar o sistema.");
-        System.out.print("Usuario: ");
         sc.nextLine();
-        String usuario = sc.nextLine();
-        System.out.print("Senha: ");
-        String senha = sc.nextLine();
+        System.out.println("Agora, informe um usuario e senha para acessar o sistema.");
+        while (temAtributo == true) {
+            int aux = 0;
+            System.out.print("Usuario: ");
+            usuario = sc.nextLine();
+            System.out.print("Senha: ");
+            senha = sc.nextLine();
+            for (Gerente gerentes : BDados.getGerentes()) {
+                if (gerentes.getCredenciaisGerente().getUsuario().equals(usuario)) {
+                    System.out.println("ERROR! Ja tem um gerente cadastrado com esse Usuario");
+                    System.out.println("Tente novamente!!!");
+                    aux++;
+                    break;
+                } else {
+                    temAtributo = false;
+                }
+                aux++;
+            }
+            if (aux == 0) {
+                temAtributo = false;
+            }
+        }
         Gerente gerente = new Gerente(nome, cpf, endereco, nTelefone, email, nCtps,
                 salario, LocalDate.now(), comissaoF, new Credenciais(usuario, senha));
         System.out.print("Agora, Informe qual cidade esse gerente irá trabalhar: ");
@@ -52,9 +149,30 @@ public class Adm {
 
     public void cadastrarPlano() {
         Scanner sc = new Scanner(System.in);
+        boolean temAtributo = true;
+        String nomePlano = "";
         char resp = 'S';
-        System.out.print("Nome do plano: ");
-        String nomePlano = sc.nextLine();
+
+        while (temAtributo == true) {
+            int aux = 0;
+            System.out.print("Nome do plano: ");
+            nomePlano = sc.nextLine();
+            for (Plano p : BDados.getPlanos()) {
+                if (nomePlano.equals(p.getNomePlano())) {
+                    System.out.println("ERROR!!! Já tem um plano com esse nome");
+                    System.out.println("Tente Novamente!!!");
+                    aux++;
+                    break;
+                } else {
+                    temAtributo = false;
+                }
+                aux++;
+            }
+            if (aux == 0) {
+                temAtributo = false;
+            }
+        }
+
         System.out.print("Valor do plano: ");
         Double valorPlano = sc.nextDouble();
         Plano plano = new Plano(nomePlano, valorPlano);
@@ -83,51 +201,74 @@ public class Adm {
         BDados.getPlanos().add(plano);
     }
 
-    public void demitirGerente(){
+    public void demitirGerente() {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Informe o nome do gerente que você quer demitir: ");
-        String nomeD = sc.nextLine().toUpperCase();
-        
-        for(Gerente gerentes: BDados.getGerentes()){
-            if(nomeD.equals(gerentes.getNome().toUpperCase())){
-                BDados.getGerentes().remove(gerentes);
+        boolean temGerente = false;
+        System.out.print("Informe o CPF do gerente que você quer demitir: ");
+        String cpfD = sc.next().toUpperCase();
+
+        for (Gerente gerentes : BDados.getGerentes()) {
+            if (cpfD.equals(gerentes.getCpf().toUpperCase())) {
                 System.out.println("O gerente " + gerentes.getNome() + " foi removido com sucesso!!!");
+                BDados.getGerentes().remove(gerentes);
+                temGerente = true;
                 break;
             }
         }
+        if (temGerente == false) {
+            System.out.println("Não tem nenhum gerente com o CPF " + cpfD + " na nossa empresa!");
+        }
     }
-    
-    public void deletarPlano(){
+
+    public void deletarPlano() {
         Scanner sc = new Scanner(System.in);
+        boolean temPlanoNome = false;
         System.out.print("Informe o nome do plano que você quer deletar: ");
         String nomeP = sc.nextLine().toUpperCase();
-        
-        for(Plano planos: BDados.getPlanos()){
-            if(nomeP.equals(planos.getNomePlano().toUpperCase())){
+
+        for (Plano planos : BDados.getPlanos()) {
+            if (nomeP.equals(planos.getNomePlano().toUpperCase())) {
                 BDados.getPlanos().remove(planos);
                 System.out.println("O plano " + planos.getNomePlano() + " foi deletado com sucesso!!!");
+                temPlanoNome = true;
                 break;
             }
         }
+
+        if (temPlanoNome == false) {
+            System.out.println("Não tem nenhum plano com o nome " + nomeP + " na nossa empresa!");
+        }
     }
-    
+
     public void exibirGerentes() {
-        System.out.println("Lista de Gerentes: ");
+        boolean temGerente = false;
+        System.out.println("\nLista de Gerentes: ");
         for (Gerente gerente : BDados.getGerentes()) {
             System.out.println(gerente);
+            temGerente = true;
+        }
+
+        if (temGerente == false) {
+            System.out.println("Não tem nenhum gerente cadastrado!!!");
         }
     }
 
     public void exibirPlanos() {
+        boolean temPlano = false;
         System.out.println("\nLista de planos: ");
         for (Plano planos : BDados.getPlanos()) {
             System.out.println(planos);
+            temPlano = true;
+        }
+
+        if (temPlano == false) {
+            System.out.println("Não tem nenhum plano cadastrado!!!");
         }
     }
 
-    public int trocarAdm() {
+    public int trocarAdm() { //Feito
         Scanner sc = new Scanner(System.in);
-        System.out.print("Informe a frase de segurança: ");
+        System.out.print("Informe a frase de segurança: (opal*****************ial) ");
         String resp = sc.nextLine();
         if (resp.equals(this.segurançaLogin)) {
             System.out.println("Otimo! Você pode trocar os dados de login.");
@@ -139,7 +280,6 @@ public class Adm {
             this.getCredenciaisAdm().setSenha(senha);
             return 0;
         } else {
-            System.out.println("Você não pode trocar a senha!!!");
             return -1;
         }
     }
