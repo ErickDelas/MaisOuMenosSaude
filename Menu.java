@@ -30,7 +30,6 @@ public class Menu {
         System.out.println("[7] Exibir lista de Planos;");
         System.out.println("[0] Sair;");
         System.out.print("Resposta: ");
-        //System.out.println("[11] Alterar Valores que os Funcionários recebem;");
     }
 
     public static void acoesGerente(Gerente gerente) {
