@@ -53,7 +53,7 @@ public class Vendedor extends Funcionario {
 
             for (Plano p : this.listaPlanoVendedorTem) {
                 if (p.getNomePlano().equals(nomePlano)) {
-                    System.out.println("Foi vendido o plano " + p.getNomePlano() + " para o cliente " + cliente.getNome() + "?");
+                    System.out.print("Foi vendido o plano " + p.getNomePlano() + " para o cliente " + cliente.getNome() + "?");
                     String resp = sc.next().toUpperCase();
                     if (resp.equals("SIM")) {
                         cliente.comprarPlano(p);
@@ -68,7 +68,8 @@ public class Vendedor extends Funcionario {
         }
     }
 
-    public void exibirListaDeClientesComPlano(){
+    public void exibirListaDeClientesAtivos(){
+        System.out.println("Lista de clientes ativos: ");
         for(Cliente c: BDados.getClientesAtivos()){
             System.out.println(c);
         }
