@@ -83,6 +83,48 @@ public class Gerente extends Funcionario {
         BDados.getAtendentes().add(atendente);
     }
 
+    public void demitirAtendente(Cidades cidade) {
+        Scanner sc = new Scanner(System.in);
+        boolean temAtendente = true;
+        System.out.print("Informe o nome do atendente que você quer demitir: ");
+        String nomeA = sc.nextLine().toUpperCase();
+
+        for (Atendente atendentes : BDados.getAtendentes()) {
+            if (nomeA.equals(atendentes.getNome().toUpperCase()) && cidade.equals(atendentes.getCidade())) {
+                BDados.getAtendentes().remove(atendentes);
+                System.out.println("O atendente " + atendentes.getNome() + " foi removido com sucesso!!!");
+                temAtendente = true;
+                break;
+            } else{
+                temAtendente = false;
+            }
+        }
+        if(temAtendente == false){
+            System.out.println("Não tem nenhum atendente com esse nome na região de " + cidade);
+        }
+    }
+
+    public void demitirVendedor(Cidades cidade) {
+        Scanner sc = new Scanner(System.in);
+        boolean temVendedor = true;
+        System.out.print("Informe o nome do vendedor que você quer demitir: ");
+        String nomeV = sc.nextLine().toUpperCase();
+
+        for (Vendedor vendedores: BDados.getVendedores()) {
+            if (nomeV.equals(vendedores.getNome().toUpperCase()) && cidade.equals(vendedores.getCidade())) {
+                BDados.getVendedores().remove(vendedores);
+                System.out.println("O vendedor " + vendedores.getNome() + " foi removido com sucesso!!!");
+                temVendedor = true;
+                break;
+            } else {
+                temVendedor = false;
+            }
+        }
+        if(temVendedor == false){
+            System.out.println("Não tem nenhum vendedor com esse nome na região de " + cidade);
+        }
+    }
+
     public void exibirAtendente() {
         System.out.println("Lista de atendentes: ");
         for (Atendente atendentes : BDados.getAtendentes()) {
@@ -112,24 +154,24 @@ public class Gerente extends Funcionario {
     }
 
     public Double calculaBonificacaoAtendente(Atendente a) {
-        if(a.getComissaoFixa()>=100){
-            return a.getComissaoFixa() - (a.getTotCancelamento()*5);
+        if (a.getComissaoFixa() >= 100) {
+            return a.getComissaoFixa() - (a.getTotCancelamento() * 5);
         } else {
             return a.getComissaoFixa() - (a.getTotCancelamento() * 2);
         }
     }
 
-    public void atribuirPlanoVendedor(Vendedor v){
-        Scanner sc = new Scanner (System.in);
+    public void atribuirPlanoVendedor(Vendedor v) {
+        Scanner sc = new Scanner(System.in);
         System.out.print("Qual o nome do plano irá ser atribuido ao vendedor " + v.getNome() + " ?");
         String nomePlano = sc.nextLine().toUpperCase();
-        for(Plano p: BDados.getPlanos()){
-            if(nomePlano.equals(p.getNomePlano().toUpperCase())){
+        for (Plano p : BDados.getPlanos()) {
+            if (nomePlano.equals(p.getNomePlano().toUpperCase())) {
                 v.getListaPlanoVendedorTem().add(p);
             }
         }
     }
-    
+
     public Credenciais getCredenciaisGerente() {
         return credenciaisGerente;
     }
