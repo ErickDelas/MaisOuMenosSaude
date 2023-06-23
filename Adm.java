@@ -83,6 +83,34 @@ public class Adm {
         BDados.getPlanos().add(plano);
     }
 
+    public void demitirGerente(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Informe o nome do gerente que você quer demitir: ");
+        String nomeD = sc.nextLine().toUpperCase();
+        
+        for(Gerente gerentes: BDados.getGerentes()){
+            if(nomeD.equals(gerentes.getNome().toUpperCase())){
+                BDados.getGerentes().remove(gerentes);
+                System.out.println("O gerente " + gerentes.getNome() + " foi removido com sucesso!!!");
+                break;
+            }
+        }
+    }
+    
+    public void deletarPlano(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Informe o nome do plano que você quer deletar: ");
+        String nomeP = sc.nextLine().toUpperCase();
+        
+        for(Plano planos: BDados.getPlanos()){
+            if(nomeP.equals(planos.getNomePlano().toUpperCase())){
+                BDados.getPlanos().remove(planos);
+                System.out.println("O plano " + planos.getNomePlano() + " foi deletado com sucesso!!!");
+                break;
+            }
+        }
+    }
+    
     public void exibirGerentes() {
         System.out.println("Lista de Gerentes: ");
         for (Gerente gerente : BDados.getGerentes()) {
