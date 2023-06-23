@@ -36,9 +36,14 @@ public class Cliente extends Pessoa {
 
     public void comprarPlano(Plano p) {
         Scanner sc = new Scanner(System.in);
+        boolean temAtributo = true;
+        String cpfD = "";
+        String nTelefoneD = "";
+        String emailD = "";
+
         System.out.println("Pronto, para podermos continuar com a compra, vamos pedir alguns dados:");
         System.out.print("Informe o seu Numero do SUS: ");
-        this.nSus = sc.nextLine();
+        String nSUS = sc.nextLine();
         System.out.print("Informe o seu Numero do cartão: ");
         this.nCartaoCredito = sc.nextLine();
         System.out.println("O nosso Plano aceita você incluir dependente(s) que tenha menos de 18 anos: ");
@@ -49,15 +54,72 @@ public class Cliente extends Pessoa {
             System.out.print("Nome: ");
             sc.nextLine();
             String nome = sc.nextLine();
-            System.out.print("CPF: ");
-            String cpf = sc.nextLine();
+            while (temAtributo == true) {
+                int aux = 0;
+                System.out.print("CPF: ");
+                cpfD = sc.nextLine();
+                for (Dependente dependentes : BDados.getDependentes()) {
+                    if (dependentes.getCpf().equals(cpfD)) {
+                        System.out.println("ERROR! Ja tem um dependente cadastrado com esse CPF");
+                        System.out.println("Tente novamente!!!");
+                        aux++;
+                        break;
+                    } else {
+                        temAtributo = false;
+                    }
+                    aux++;
+                }
+                if (aux == 0) {
+                    temAtributo = false;
+                }
+            }
+
+            temAtributo = true;
             System.out.print("Endereço: ");
             String endereco = sc.nextLine();
-            System.out.print("Numero de telefone: ");
-            String nTelefone = sc.nextLine();
-            System.out.print("Email: ");
-            String email = sc.nextLine();
-            this.dependente = new Dependente(nome, cpf, endereco, nTelefone, email);
+
+            while (temAtributo == true) {
+                int aux = 0;
+                System.out.print("Numero de telefone: ");
+                nTelefoneD = sc.nextLine();
+                for (Dependente dependentes : BDados.getDependentes()) {
+                    if (dependentes.getnTelefone().equals(nTelefoneD)) {
+                        System.out.println("ERROR! Ja tem um dependente cadastrado com esse Nº de telefone");
+                        System.out.println("Tente novamente!!!");
+                        aux++;
+                        break;
+                    } else {
+                        temAtributo = false;
+                    }
+                    aux++;
+                }
+                if (aux == 0) {
+                    temAtributo = false;
+                }
+            }
+
+            temAtributo = true;
+            while (temAtributo == true) {
+                int aux = 0;
+                System.out.print("Email: ");
+                emailD = sc.nextLine();
+                for (Dependente dependentes : BDados.getDependentes()) {
+                    if (dependentes.getEmail().equals(emailD)) {
+                        System.out.println("ERROR! Ja tem um dependente cadastrado com esse email");
+                        System.out.println("Tente novamente!!!");
+                        aux++;
+                        break;
+                    } else {
+                        temAtributo = false;
+                    }
+                    aux++;
+                }
+                if (aux == 0) {
+                    temAtributo = false;
+                }
+            }
+            this.dependente = new Dependente(nome, cpfD, endereco, nTelefoneD, emailD);
+            BDados.getDependentes().add(dependente);
         }
         this.dataHoraAquisicaoPlano = LocalDateTime.now();
         this.planoCliente = p;
@@ -74,6 +136,46 @@ public class Cliente extends Pessoa {
 
     public void marcarConsulta() {
 
+    }
+
+    public void setnSus(String nSus) {
+        this.nSus = nSus;
+    }
+
+    public void setnCartaoCredito(String nCartaoCredito) {
+        this.nCartaoCredito = nCartaoCredito;
+    }
+
+    public void setDataHoraAquisicaoPlano(LocalDateTime dataHoraAquisicaoPlano) {
+        this.dataHoraAquisicaoPlano = dataHoraAquisicaoPlano;
+    }
+
+    public void setDependente(Dependente dependente) {
+        this.dependente = dependente;
+    }
+
+    public void setPlanoCliente(Plano planoCliente) {
+        this.planoCliente = planoCliente;
+    }
+
+    public String getnSus() {
+        return nSus;
+    }
+
+    public String getnCartaoCredito() {
+        return nCartaoCredito;
+    }
+
+    public LocalDateTime getDataHoraAquisicaoPlano() {
+        return dataHoraAquisicaoPlano;
+    }
+
+    public Dependente getDependente() {
+        return dependente;
+    }
+
+    public Plano getPlanoCliente() {
+        return planoCliente;
     }
 
     @Override
