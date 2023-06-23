@@ -42,7 +42,7 @@ public class MenuAcao {
                 gerente.demitirAtendente(gerente.getCidade());
                 break;
             case 3:
-                gerente.exibirAtendente();
+                gerente.exibirAtendente(gerente.getCidade());
                 break;
             case 4:
                 gerente.cadastrarVendedor(gerente.getCidade());
@@ -51,7 +51,7 @@ public class MenuAcao {
                 gerente.demitirVendedor(gerente.getCidade());
                 break;
             case 6:
-                gerente.exibirVendedor();
+                gerente.exibirVendedor(gerente.getCidade());
                 break;
             case 7: 
                 for (Vendedor v : BDados.getVendedores()) {
