@@ -24,6 +24,7 @@ public class Vendedor extends Funcionario {
                 dataContratacao, comissaoFixa);
         this.totVendasMes = 0;
         this.credenciaisVendedor = credenciaisVendedor;
+        this.listaPlanoVendedorTem.add(0, null);
     }
 
     public void venderPlano() {
@@ -43,7 +44,7 @@ public class Vendedor extends Funcionario {
                     cliente = c;
                 }
             }
-            
+
             System.out.println("Escolha um plano para vender ao cliente " + cliente.getNome());
             for (Plano p : this.listaPlanoVendedorTem) {
                 System.out.print(" - " + p.getNomePlano() + " - ");
@@ -68,13 +69,24 @@ public class Vendedor extends Funcionario {
         }
     }
 
-    public void exibirListaDeClientesAtivos(){
+    public void exibirListaDeClientesAtivos() {
+
+        boolean temCliente = false;
         System.out.println("Lista de clientes ativos: ");
-        for(Cliente c: BDados.getClientesAtivos()){
+        for (Cliente c : BDados.getClientesAtivos()) {
             System.out.println(c);
+            temCliente = true;
+        }
+
+        if (temCliente == false) {
+            System.out.println("Não tem nenhum cliente ativo!!!");
         }
     }
-    
+
+    public void setListaPlanoVendedorTem(List<Plano> listaPlanoVendedorTem) {
+        this.listaPlanoVendedorTem = listaPlanoVendedorTem;
+    }
+
     public int getTotVendasMes() {
         return totVendasMes;
     }
@@ -96,7 +108,7 @@ public class Vendedor extends Funcionario {
     }
 
     @Override
-public String toString() {
+    public String toString() {
         return "Nome: " + this.getNome()
                 + " - CPF: " + this.getCpf()
                 + " - Numero de telefone: " + this.getnTelefone()
