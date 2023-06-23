@@ -3,7 +3,6 @@ package maisoumenossaude;
 import cidades.Enum.Cidades;
 import java.time.LocalDate;
 import java.util.Scanner;
-//import java.util.ArrayList;
 
 public class Atendente extends Funcionario {
 
@@ -22,9 +21,6 @@ public class Atendente extends Funcionario {
         this.credenciaisAtendente = credenciaisAtendente;
     }
 
-    /*Recebe um Cliente como parametro e add em um ArrayList do tipo Cliente 
-    chamado possiveisClientes que tem na classe BDados.
-     */
     public void cadastrarCliente() {
         Scanner sc = new Scanner(System.in);
 
@@ -42,9 +38,16 @@ public class Atendente extends Funcionario {
         BDados.getPossiveisClientes().add(cliente);
     }
 
-    public void exibirClientes() {
-        System.out.println("Lista de clientes: ");
+    public void exibirPossiveisClientes() {
+        System.out.println("Lista de possiveis clientes: ");
         for (Cliente clientesPossiveis : BDados.getPossiveisClientes()) {
+            System.out.println(clientesPossiveis);
+        }
+    }
+
+    public void exibirClientesInativos() {
+        System.out.println("Lista de clientes inativos: ");
+        for (Cliente clientesPossiveis : BDados.getClientesInativos()) {
             System.out.println(clientesPossiveis);
         }
     }
@@ -52,7 +55,7 @@ public class Atendente extends Funcionario {
     public void cancelaPlano() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Informe o CPF do cliente para cancelar o plano:");
+        System.out.print("Informe o CPF do cliente para cancelar o plano:");
         String cpfCliente = sc.nextLine().toUpperCase();
 
         for (Cliente c : BDados.getClientesAtivos()) {
@@ -60,6 +63,7 @@ public class Atendente extends Funcionario {
                 BDados.getClientesInativos().add(c);
                 BDados.getClientesAtivos().remove(c);
                 this.totCancelamento++;
+                break;
             }
         }
     }
