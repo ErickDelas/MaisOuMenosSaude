@@ -2,6 +2,8 @@ package maisoumenossaude;
 
 import cidades.Enum.Cidades;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Gerente extends Funcionario {
@@ -23,28 +25,130 @@ public class Gerente extends Funcionario {
 
     public void cadastrarVendedor(Cidades cidade) {
         Scanner sc = new Scanner(System.in);
+        boolean temAtributo = true;
+        String cpf = "";
+        String usuario = "";
+        String senha = "";
+        String nTelefone = "";
+        String email = "";
+        String nCtps = "";
+
         System.out.print("Nome: ");
         String nome = sc.nextLine();
-        System.out.print("CPF: ");
-        String cpf = sc.nextLine();
+
+        while (temAtributo == true) {
+            int aux = 0;
+            System.out.print("CPF: ");
+            cpf = sc.nextLine();
+            for (Vendedor vendedores : BDados.getVendedores()) {
+                if (vendedores.getCpf().equals(cpf)) {
+                    System.out.println("ERROR! Ja tem um vendedor cadastrado com esse CPF");
+                    System.out.println("Tente novamente!!!");
+                    aux++;
+                    break;
+                } else {
+                    temAtributo = false;
+                }
+                aux++;
+            }
+            if (aux == 0) {
+                temAtributo = false;
+            }
+        }
+
+        temAtributo = true;
         System.out.print("Endereço: ");
         String endereco = sc.nextLine();
-        System.out.print("Numero de telefone: ");
-        String nTelefone = sc.nextLine();
-        System.out.print("Email: ");
-        String email = sc.nextLine();
-        System.out.print("Numero da carteira de trabalho: ");
-        String nCtps = sc.nextLine();
+
+        while (temAtributo == true) {
+            int aux = 0;
+            System.out.print("Numero de telefone: ");
+            nTelefone = sc.nextLine();
+            for (Vendedor vendedores : BDados.getVendedores()) {
+                if (vendedores.getnTelefone().equals(nTelefone)) {
+                    System.out.println("ERROR! Ja tem um vendedor cadastrado com esse Numero de telefone");
+                    System.out.println("Tente novamente!!!");
+                    aux++;
+                    break;
+                } else {
+                    temAtributo = false;
+                }
+                aux++;
+            }
+            if (aux == 0) {
+                temAtributo = false;
+            }
+        }
+        temAtributo = true;
+        while (temAtributo == true) {
+            int aux = 0;
+            System.out.print("Email: ");
+            email = sc.nextLine();
+            for (Vendedor vendedores : BDados.getVendedores()) {
+                if (vendedores.getEmail().equals(email)) {
+                    System.out.println("ERROR! Ja tem um vendedor cadastrado com esse email");
+                    System.out.println("Tente novamente!!!");
+                    aux++;
+                    break;
+                } else {
+                    temAtributo = false;
+                }
+                aux++;
+            }
+            if (aux == 0) {
+                temAtributo = false;
+            }
+        }
+        temAtributo = true;
+        while (temAtributo == true) {
+            int aux = 0;
+            System.out.print("Numero da carteira de trabalho: ");
+            nCtps = sc.nextLine();
+            for (Vendedor vendedores : BDados.getVendedores()) {
+                if (vendedores.getnCtps().equals(nCtps)) {
+                    System.out.println("ERROR! Ja tem um vendedor cadastrado com esse Nº de carteira de trabalho");
+                    System.out.println("Tente novamente!!!");
+                    aux++;
+                    break;
+                } else {
+                    temAtributo = false;
+                }
+                aux++;
+            }
+            if (aux == 0) {
+                temAtributo = false;
+            }
+        }
+
+        temAtributo = true;
         System.out.print("Salario: ");
         double salario = sc.nextDouble();
         System.out.print("Comissao Fixa: ");
         double comissaoF = sc.nextDouble();
         System.out.println("Agora, informe um usuario e senha para acessar o sistema.");
-        System.out.print("Usuario: ");
         sc.nextLine();
-        String usuario = sc.nextLine();
-        System.out.print("Senha: ");
-        String senha = sc.nextLine();
+        while (temAtributo == true) {
+            int aux = 0;
+            System.out.print("Usuario: ");
+            usuario = sc.nextLine();
+            System.out.print("Senha: ");
+            senha = sc.nextLine();
+            for (Vendedor vendedores : BDados.getVendedores()) {
+                if (vendedores.getCredenciaisVendedor().getUsuario().equals(usuario)) {
+                    System.out.println("ERROR! Ja tem um vendedor cadastrado com esse Usuario");
+                    System.out.println("Tente novamente!!!");
+                    aux++;
+                    break;
+                } else {
+                    temAtributo = false;
+                }
+                aux++;
+            }
+            if (aux == 0) {
+                temAtributo = false;
+            }
+        }
+
         Vendedor vendedor = new Vendedor(nome, cpf, endereco, nTelefone, email,
                 nCtps, salario, LocalDate.now(), comissaoF,
                 new Credenciais(usuario, senha));
@@ -54,28 +158,129 @@ public class Gerente extends Funcionario {
 
     public void cadastrarAtendente(Cidades cidade) {
         Scanner sc = new Scanner(System.in);
+        boolean temAtributo = true;
+        String cpf = "";
+        String usuario = "";
+        String senha = "";
+        String nTelefone = "";
+        String email = "";
+        String nCtps = "";
+
         System.out.print("Nome: ");
         String nome = sc.nextLine();
-        System.out.print("CPF: ");
-        String cpf = sc.nextLine();
+
+        while (temAtributo == true) {
+            int aux = 0;
+            System.out.print("CPF: ");
+            cpf = sc.nextLine();
+            for (Atendente atendentes : BDados.getAtendentes()) {
+                if (atendentes.getCpf().equals(cpf)) {
+                    System.out.println("ERROR! Ja tem um atendente cadastrado com esse CPF");
+                    System.out.println("Tente novamente!!!");
+                    aux++;
+                    break;
+                } else {
+                    temAtributo = false;
+                }
+                aux++;
+            }
+            if (aux == 0) {
+                temAtributo = false;
+            }
+        }
+
+        temAtributo = true;
         System.out.print("Endereço: ");
         String endereco = sc.nextLine();
-        System.out.print("Numero de telefone: ");
-        String nTelefone = sc.nextLine();
-        System.out.print("Email: ");
-        String email = sc.nextLine();
-        System.out.print("Numero da carteira de trabalho: ");
-        String nCtps = sc.nextLine();
+
+        while (temAtributo == true) {
+            int aux = 0;
+            System.out.print("Numero de telefone: ");
+            nTelefone = sc.nextLine();
+            for (Atendente atendentes : BDados.getAtendentes()) {
+                if (atendentes.getnTelefone().equals(nTelefone)) {
+                    System.out.println("ERROR! Ja tem um atendente cadastrado com esse Numero de telefone");
+                    System.out.println("Tente novamente!!!");
+                    aux++;
+                    break;
+                } else {
+                    temAtributo = false;
+                }
+                aux++;
+            }
+            if (aux == 0) {
+                temAtributo = false;
+            }
+        }
+        temAtributo = true;
+        while (temAtributo == true) {
+            int aux = 0;
+            System.out.print("Email: ");
+            email = sc.nextLine();
+            for (Atendente atendentes : BDados.getAtendentes()) {
+                if (atendentes.getEmail().equals(email)) {
+                    System.out.println("ERROR! Ja tem um atendente cadastrado com esse email");
+                    System.out.println("Tente novamente!!!");
+                    aux++;
+                    break;
+                } else {
+                    temAtributo = false;
+                }
+                aux++;
+            }
+            if (aux == 0) {
+                temAtributo = false;
+            }
+        }
+        temAtributo = true;
+        while (temAtributo == true) {
+            int aux = 0;
+            System.out.print("Numero da carteira de trabalho: ");
+            nCtps = sc.nextLine();
+            for (Atendente atendentes : BDados.getAtendentes()) {
+                if (atendentes.getnCtps().equals(nCtps)) {
+                    System.out.println("ERROR! Ja tem um gerente atendente com esse Nº de carteira de trabalho");
+                    System.out.println("Tente novamente!!!");
+                    aux++;
+                    break;
+                } else {
+                    temAtributo = false;
+                }
+                aux++;
+            }
+            if (aux == 0) {
+                temAtributo = false;
+            }
+        }
+
+        temAtributo = true;
         System.out.print("Salario: ");
         double salario = sc.nextDouble();
         System.out.print("Comissao Fixa: ");
         double comissaoF = sc.nextDouble();
         System.out.println("Agora, informe um usuario e senha para acessar o sistema.");
-        System.out.print("Usuario: ");
         sc.nextLine();
-        String usuario = sc.nextLine();
-        System.out.print("Senha: ");
-        String senha = sc.nextLine();
+        while (temAtributo == true) {
+            int aux = 0;
+            System.out.print("Usuario: ");
+            usuario = sc.nextLine();
+            System.out.print("Senha: ");
+            senha = sc.nextLine();
+            for (Atendente atendentes : BDados.getAtendentes()) {
+                if (atendentes.getCredenciaisAtendente().getUsuario().equals(usuario)) {
+                    System.out.println("ERROR! Ja tem um atendente cadastrado com esse Usuario");
+                    System.out.println("Tente novamente!!!");
+                    aux++;
+                    break;
+                } else {
+                    temAtributo = false;
+                }
+                aux++;
+            }
+            if (aux == 0) {
+                temAtributo = false;
+            }
+        }
         Atendente atendente = new Atendente(nome, cpf, endereco, nTelefone, email,
                 nCtps, salario, LocalDate.now(), comissaoF,
                 new Credenciais(usuario, senha));
@@ -85,57 +290,67 @@ public class Gerente extends Funcionario {
 
     public void demitirAtendente(Cidades cidade) {
         Scanner sc = new Scanner(System.in);
-        boolean temAtendente = true;
-        System.out.print("Informe o nome do atendente que você quer demitir: ");
-        String nomeA = sc.nextLine().toUpperCase();
+        boolean temAtendente = false;
+        System.out.print("Informe o CPF do atendente que você quer demitir: ");
+        String cpfA = sc.nextLine().toUpperCase();
 
         for (Atendente atendentes : BDados.getAtendentes()) {
-            if (nomeA.equals(atendentes.getNome().toUpperCase()) && cidade.equals(atendentes.getCidade())) {
-                BDados.getAtendentes().remove(atendentes);
+            if (cpfA.equals(atendentes.getCpf().toUpperCase()) && cidade.equals(atendentes.getCidade())) {
                 System.out.println("O atendente " + atendentes.getNome() + " foi removido com sucesso!!!");
+                BDados.getAtendentes().remove(atendentes);
                 temAtendente = true;
                 break;
-            } else{
-                temAtendente = false;
             }
         }
-        if(temAtendente == false){
-            System.out.println("Não tem nenhum atendente com esse nome na região de " + cidade);
+        if (temAtendente == false) {
+            System.out.println("Não tem nenhum atendente com o CPF " + cpfA + " na região de " + cidade + "!");
         }
     }
 
     public void demitirVendedor(Cidades cidade) {
         Scanner sc = new Scanner(System.in);
-        boolean temVendedor = true;
-        System.out.print("Informe o nome do vendedor que você quer demitir: ");
-        String nomeV = sc.nextLine().toUpperCase();
+        boolean temVendedor = false;
+        System.out.print("Informe o CPF do vendedor que você quer demitir: ");
+        String cpfV = sc.nextLine().toUpperCase();
 
-        for (Vendedor vendedores: BDados.getVendedores()) {
-            if (nomeV.equals(vendedores.getNome().toUpperCase()) && cidade.equals(vendedores.getCidade())) {
-                BDados.getVendedores().remove(vendedores);
+        for (Vendedor vendedores : BDados.getVendedores()) {
+            if (cpfV.equals(vendedores.getCpf().toUpperCase()) && cidade.equals(vendedores.getCidade())) {
                 System.out.println("O vendedor " + vendedores.getNome() + " foi removido com sucesso!!!");
+                BDados.getVendedores().remove(vendedores);
                 temVendedor = true;
                 break;
-            } else {
-                temVendedor = false;
             }
         }
-        if(temVendedor == false){
-            System.out.println("Não tem nenhum vendedor com esse nome na região de " + cidade);
+        if (temVendedor == false) {
+            System.out.println("Não tem nenhum vendedor com o CPF " + cpfV + " na região de " + cidade + "!");
         }
     }
 
-    public void exibirAtendente() {
-        System.out.println("Lista de atendentes: ");
+    public void exibirAtendente(Cidades cidade) {
+        boolean temAtendente = false;
+        System.out.println("Lista de atendentes em " + cidade + ": ");
         for (Atendente atendentes : BDados.getAtendentes()) {
-            System.out.println(atendentes);
+            if (atendentes.getCidade().equals(cidade)) {
+                System.out.println(atendentes);
+                temAtendente = true;
+            }
+        }
+        if (temAtendente == false) {
+            System.out.println("Não tem nenhum gerente cadastrado na unidade de " + cidade + "!!!");
         }
     }
 
-    public void exibirVendedor() {
-        System.out.println("Lista de vendedores: ");
+    public void exibirVendedor(Cidades cidade) {
+        boolean temVendedor = false;
+        System.out.println("Lista de vendedores em " + cidade + ": ");
         for (Vendedor vendedores : BDados.getVendedores()) {
-            System.out.println(vendedores);
+            if (vendedores.getCidade().equals(cidade)) {
+                System.out.println(vendedores);
+                temVendedor = true;
+            }
+        }
+        if (temVendedor == false) {
+            System.out.println("Não tem nenhum gerente cadastrado na unidade de " + cidade + "!!!");
         }
     }
 
@@ -167,8 +382,16 @@ public class Gerente extends Funcionario {
         String nomePlano = sc.nextLine().toUpperCase();
         for (Plano p : BDados.getPlanos()) {
             if (nomePlano.equals(p.getNomePlano().toUpperCase())) {
-                v.getListaPlanoVendedorTem().add(p);
+                if (v.getListaPlanoVendedorTem().get(0) == null) {
+                    v.getListaPlanoVendedorTem().remove(0);
+                    v.getListaPlanoVendedorTem().add(p);
+                } else {
+                    v.getListaPlanoVendedorTem().add(p);
+                }
             }
+        }
+        for (Plano p : v.getListaPlanoVendedorTem()) {
+            System.out.println(p);
         }
     }
 
