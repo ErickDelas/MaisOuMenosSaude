@@ -12,12 +12,18 @@ public class MenuAcao {
                 adm.cadastrarGerente();
                 break;
             case 3:
-                adm.exibirGerentes();
+                adm.demitirGerente();
                 break;
             case 4:
-                adm.cadastrarPlano();
+                adm.exibirGerentes();
                 break;
             case 5:
+                adm.cadastrarPlano();
+                break;
+            case 6:
+                adm.deletarPlano();
+                break;
+            case 7:
                 adm.exibirPlanos();
                 break;
             case 0:
@@ -26,36 +32,42 @@ public class MenuAcao {
         }
         return resp;
     }
-
+    
     public void executarAcaoGerente(Gerente gerente, int opcaoGerente) {
         switch (opcaoGerente) {
             case 1:
                 gerente.cadastrarAtendente(gerente.getCidade());
                 break;
             case 2:
-                gerente.exibirAtendente();
+                gerente.demitirAtendente(gerente.getCidade());
                 break;
             case 3:
-                gerente.cadastrarVendedor(gerente.getCidade());
+                gerente.exibirAtendente();
                 break;
             case 4:
+                gerente.cadastrarVendedor(gerente.getCidade());
+                break;
+            case 5: 
+                gerente.demitirVendedor(gerente.getCidade());
+                break;
+            case 6:
                 gerente.exibirVendedor();
                 break;
-            case 5:
+            case 7: 
                 for (Vendedor v : BDados.getVendedores()) {
                     if (v.getCidade().equals(gerente.getCidade())) {
                         gerente.atribuirPlanoVendedor(v);
                     }
                 }
                 break;
-            case 6:
+            case 8:
                 for (Atendente a : BDados.getAtendentes()) {
                     if (a.getCidade().equals(gerente.getCidade())) {
                         gerente.pagarAtendente(a);
                     }
                 }
                 break;
-            case 7:
+            case 9:
                 for (Vendedor v : BDados.getVendedores()) {
                     if (v.getCidade().equals(gerente.getCidade())) {
                         gerente.pagarVendedor(v);
@@ -66,14 +78,14 @@ public class MenuAcao {
                 break;
         }
     }
-
+    
     public void executarAcaoVendedor(Vendedor vendedor, int opcaoVendedor) {
         switch (opcaoVendedor) {
             case 1:
                 vendedor.venderPlano();
                 break;
             case 2:
-                vendedor.exibirListaDeClientesComPlano();
+                vendedor.exibirListaDeClientesAtivos();
                 break;
         }
     }
@@ -84,10 +96,13 @@ public class MenuAcao {
                 atendente.cadastrarCliente();
                 break;
             case 2:
-                atendente.exibirClientes();
+                atendente.exibirPossiveisClientes();
                 break;
             case 3:
                 atendente.cancelaPlano();
+                break;
+            case 4: 
+                atendente.exibirClientesInativos();
                 break;
         }
     }
