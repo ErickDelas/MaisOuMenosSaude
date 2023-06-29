@@ -6,3 +6,5 @@ Após as últimas atualizações se trata de um: JavaFX Project,
 ou seja, é necessário terem instalado a versão JavaFX compatível com a sua versão do JDK,
 além de terem instalado o Scene Builder e configurarem os caminhos corretamente dentro da
 sua IDE (Eclipse, NetBeans, etc.)
+
+P.S. Quem puder deleta os dois FILEs acima deste README, no caso CargosEmpresa.java e Cidades.java
