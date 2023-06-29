@@ -1,17 +1,19 @@
-package maisoumenossaude;
+package application;
 
 public class NomesClinicas {
-    private String nomeClinica;
 
-    public NomesClinicas() {
-    }
+	private String nomeClinica;
 
-    public NomesClinicas(String nomeClinica) {
-        this.nomeClinica = nomeClinica;
-    }
+	public NomesClinicas() {
 
-    @Override
-    public String toString() {
-        return " - " + this.nomeClinica + " - ";
-    }
+	}
+
+	public NomesClinicas(String nomeClinica) {
+		this.nomeClinica = nomeClinica;
+	}
+
+	@Override
+	public String toString() {
+		return " - " + this.nomeClinica + " - ";
+	}
 }
