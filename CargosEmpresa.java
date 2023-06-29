@@ -1,3 +1,1 @@
-package cargosEmpresa;
-
-public enum CargosEmpresa {ADMINISTRADOR, GERENTE, VENDEDOR, ATENDENTE, NADA}
+// Lembrem de deletar isso aqui, eu não sei como faz.
