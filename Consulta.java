@@ -1,27 +1,27 @@
-package maisoumenossaude;
+package application;
 
 public class Consulta {
-    private double valorConsulta;
-    private String tipoString;
-    
-    public Consulta(double valorConsulta, String tipoString){
-        this.valorConsulta = valorConsulta;
-        this.tipoString = tipoString;
-    }
+	private double valorConsulta;
+	private String tipoString;
 
-    public double getValorConsulta() {
-        return valorConsulta;
-    }
+	public Consulta(double valorConsulta, String tipoString) {
+		this.valorConsulta = valorConsulta;
+		this.tipoString = tipoString;
+	}
 
-    public void setValorConsulta(double valorConsulta) {
-        this.valorConsulta = valorConsulta;
-    }
+	public double getValorConsulta() {
+		return valorConsulta;
+	}
 
-    public String getTipoString() {
-        return tipoString;
-    }
+	public void setValorConsulta(double valorConsulta) {
+		this.valorConsulta = valorConsulta;
+	}
 
-    public void setTipoString(String tipoString) {
-        this.tipoString = tipoString;
-    }
+	public String getTipoString() {
+		return tipoString;
+	}
+
+	public void setTipoString(String tipoString) {
+		this.tipoString = tipoString;
+	}
 }
